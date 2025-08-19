@@ -1,0 +1,21 @@
+{
+  "name": "login-api-mvc-tests",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "mocha \"test/**/*.spec.js\" --reporter spec",
+    "test:watch": "mocha \"test/**/*.spec.js\" --watch",
+    "lint": "echo \"(adicione eslint se quiser)\""
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.6.0",
+    "sinon": "^17.0.1",
+    "supertest": "^7.0.0"
+  }
+}
