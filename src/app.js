@@ -14,19 +14,23 @@ function createApp({ authService }) {
     next();
   });
 
+  // Suas rotas principais
   app.use("/auth", authRoutesFactory({ authService }));
   app.get("/health", (_req, res) => res.json({ ok: true }));
 
+  // Middleware para capturar rota não encontrada (erro 404)
   app.use((_req, res) => res.status(404).json({ error: "Not Found" }));
 
+  // Middleware de erro genérico (500)
   app.use((err, _req, res, _next) => {
     if (err && err.name === "InvalidCredentialsError") {
       return res.status(401).json({ error: "invalid credentials" });
     }
-    console.error("Unhandled error:", err); // veja o stack no terminal
+    console.error("Unhandled error:", err); // Log do erro no terminal
     res.status(500).json({ error: "internal error" });
   });
 
   return app;
 }
+
 module.exports = { createApp };

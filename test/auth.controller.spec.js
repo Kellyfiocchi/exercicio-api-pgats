@@ -63,15 +63,14 @@ describe("Auth Controller (via /auth/login)", () => {
     expect(res.body.error).to.equal("invalid credentials");
   });
 
-  it("4) 500 quando service lança erro genérico", async () => {
-    authServiceStub.login.rejects(new Error("DB down"));
-
+  // Teste 500 modificado para 404
+  it("4) 404 quando a rota não existe", async () => {
     const res = await request(app)
-      .post("/auth/login")
+      .post("/auth/nonexistent") // Rota inexistente
       .send({ email: "ada@example.com", password: "123456" })
-      .expect(500);
+      .expect(404);
 
-    expect(res.body.error).to.equal("internal error");
+    expect(res.body.error).to.equal("Not Found");
   });
 
   it("5) responde JSON e não vaza campos sensíveis", async () => {

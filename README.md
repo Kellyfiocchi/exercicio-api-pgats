@@ -80,21 +80,35 @@ npm run dev
 ## Testar o Login (3 cenários)
 
 ```text
-# sucesso (200)
+#Teste 1 — Sucesso 200 (Credenciais válidas)
+
 curl -i -X POST http://127.0.0.1:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"ada@example.com","password":"123456"}'
 
-# senha errada (401)
+#Teste 2 — 400 Bad Request (Faltando email ou password)
+
 curl -i -X POST http://127.0.0.1:3000/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email":"ada@example.com","password":"errada"}'
+  -d '{"email":"ada@example.com"}'  # Sem o campo password
 
-# campo faltando (400)
+#Teste 3 — 401 Unauthorized (Credenciais inválidas)
+
 curl -i -X POST http://127.0.0.1:3000/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email":"ada@example.com"}'
+  -d '{"email":"ada@example.com","password":"wrongpassword"}'
 
+#Teste 4 — 404 Not Found (Rota não encontrada)
+
+curl -i -X POST http://127.0.0.1:3000/auth/nonexistent \
+  -H "Content-Type: application/json" \
+  -d '{"email":"ada@example.com","password":"123456"}'
+
+#Teste 5  — Sucesso 200  Não Vazar Campos Sensíveis
+
+curl -i -X POST http://127.0.0.1:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"ada@example.com","password":"123456"}'
 ```
 
 ## 🧪 Testes Automatizados
@@ -111,9 +125,9 @@ npm test
 
 🔒 401 quando credenciais inválidas (erro do service mapeado)
 
-💥 500 quando o service lança erro genérico
+💥 404 Not Found (Rota não encontrada)
 
-🛡️ Resposta não vaza password (whitelist no controller)
+🛡️ 200 Resposta não vaza password (whitelist no controller)
 
 ## 📚 Referências
 
