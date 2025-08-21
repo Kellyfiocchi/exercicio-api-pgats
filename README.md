@@ -131,4 +131,30 @@ npm test
 
 ## 📚 Referências
 
-- Node.js • Express • Mocha • Chai • Sinon • SuperTest • GitHub Actions
+### [Node.js](https://nodejs.org/)
+- Plataforma JavaScript para a execução do código no servidor.
+- [Documentação do Node.js](https://nodejs.org/en/docs/)
+
+### [Express](https://expressjs.com/)
+- Framework web para Node.js que facilita a criação de APIs e servidores.
+- [Documentação do Express](https://expressjs.com/en/4x/api.html)
+
+### [Mocha](https://mochajs.org/)
+- Framework de testes para JavaScript, usado para realizar testes unitários e de integração.
+- [Documentação do Mocha](https://mochajs.org/#getting-started)
+
+### [Chai](https://www.chaijs.com/)
+- Biblioteca de asserções usada para escrever testes mais legíveis.
+- [Documentação do Chai](https://www.chaijs.com/guide/)
+
+### [Sinon](https://sinonjs.org/)
+- Biblioteca para criar **spies**, **stubs**, e **mocks**, utilizada para testes de funções e chamadas assíncronas.
+- [Documentação do Sinon](https://sinonjs.org/releases/latest/)
+
+### [SuperTest](https://github.com/visionmedia/supertest)
+- Framework de testes para testar APIs HTTP com Mocha.
+- [Documentação do SuperTest](https://github.com/visionmedia/supertest#api)
+
+### [GitHub Actions](https://github.com/features/actions)
+- Plataforma de CI/CD para automação de fluxos de trabalho no GitHub.
+- [Documentação do GitHub Actions](https://docs.github.com/en/actions)
